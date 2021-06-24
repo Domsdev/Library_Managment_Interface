@@ -20,8 +20,8 @@
 **MySQL Connector:** pip3 install mysql-connector-python<br/>
  <br/>
 **Need to create environment variables to make the application run without modifications, adding the following two lines at the end of my .bashrc file**<br/>
-export MYSQL_USER='doms'<br/>
-export MYSQL_PASSWORD='your password'<br/>
+export MYSQL_USER='username'<br/>
+export MYSQL_PASSWORD='password'<br/>
  <br/>
 **Tkinter:** sudo apt-get install python3-tk<br/>
 **pil.imagetk:** sudo apt-get install python3-pil.imagetk<br/>
