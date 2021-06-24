@@ -18,6 +18,11 @@
 
 **MySQL server installed and configured for a user:** sudo apt-get install mysql-server<br/>
 **MySQL Connector:** pip3 install mysql-connector-python<br/>
+ <br/>
+**Need to create environment variables to make the application run without modifications, adding the following two lines at the end of my .bashrc file**<br/>
+export MYSQL_USER='doms'<br/>
+export MYSQL_PASSWORD='your password'<br/>
+ <br/>
 **Tkinter:** sudo apt-get install python3-tk<br/>
 **pil.imagetk:** sudo apt-get install python3-pil.imagetk<br/>
 **Sendmail:** pip3 install sendmail<br/>
@@ -52,7 +57,6 @@
 
 ### If you look the tables in the library database, and in the "User" table, you will find exemples of users already created. Note that for this exercice I did not encrypt passwords (maybe in future developments).
 
-![png](img/step4.png)
 ![png](img/step5.png)
 
 ### Ok now let's connect to the "libra" user account!
