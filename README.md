@@ -1,8 +1,8 @@
 # Library Managment Interface
 
 [![python](https://img.shields.io/badge/python-3.8.5-brightgreen?style=plastic)](https://www.python.org/downloads/release/python-385/)
-[![Tkinter](https://img.shields.io/badge/tkinter-8.6-brightgreen?style=plastic)]
-[![MySQL](https://img.shields.io/badge/mysql-8.0.25-0-brightgreen?style=plastic)]
+[![tkinter](https://img.shields.io/badge/tkinter-8.6-brightgreen?style=plastic)]
+[![MySQL](https://img.shields.io/badge/mysql-8.0.25.0-brightgreen?style=plastic)]
 [![licence](https://img.shields.io/badge/licence-MIT-yellow?style=plastic)](https://github.com/Domsdev/Data-science-blog/blob/main/MIT%20Licence.md)
 [![linkedIn](https://img.shields.io/badge/-LinkedIn%20-blue?style=plastic)](https://www.linkedin.com/in/dominique-pothin-dev/)
 
