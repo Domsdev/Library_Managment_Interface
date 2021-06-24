@@ -58,6 +58,7 @@ export MYSQL_PASSWORD='password'<br/>
 ### If you look the tables in the library database, and in the "User" table, you will find exemples of users already created. Note that for this exercice I did not encrypt passwords (maybe in future developments).
 
 ![png](img/step5.png)
+![png](img/step6.png)
 
 ### Ok now let's connect to the "libra" user account!
 
