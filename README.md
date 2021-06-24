@@ -2,7 +2,7 @@
 
 ---
 
-**In this repository you will find the code and elements I used to create a desktop application for the managment of a library using Python, Tkinter and MySQL. This application is still under construction!**
+## In this repository you will find the code and elements I used to create a desktop application for the managment of a library using Python, Tkinter and MySQL. I created this app as a concrete exemple to put into practice the skills I acquired during training courses in Python and SQL. The app is still under construction!
 
 ---
 
@@ -16,11 +16,11 @@
 
 ## Requirements
 
-**MySQL server installed and configured for a user.** sudo apt-get install mysql-server<br/>
-**MySQL Connector** pip3 install mysql-connector-python<br/>
-**Tkinter** sudo apt-get install python3-tk<br/>
-**pil.imagetk** sudo apt-get install python3-pil.imagetk<br/>
-**Sendmail** pip3 install sendmail<br/>
+**MySQL server installed and configured for a user:** sudo apt-get install mysql-server<br/>
+**MySQL Connector:** pip3 install mysql-connector-python<br/>
+**Tkinter:** sudo apt-get install python3-tk<br/>
+**pil.imagetk:** sudo apt-get install python3-pil.imagetk<br/>
+**Sendmail:** pip3 install sendmail<br/>
 
 
 ## Test the application
@@ -33,7 +33,7 @@
 
 ![png](img/step1.png)
 
-### Built and fill the databases using python scripts in dedicated folder
+### Built and fill the databases using python scripts in the dedicated folder
 
 ![png](img/step2.png)
 ![png](img/step3.png)
@@ -49,6 +49,33 @@
 ### Let's imagine that a librarian wants to connect to its account:
 
 ![png](img/screen2.png)
+
+### If you look the tables in the library database, and in the "User" table, you will find exemples of users already created. Note that for this exercice I did not encrypt passwords (maybe in future developments).
+
+![png](img/step4.png)
+![png](img/step5.png)
+
+### Ok now let's connect to the "libra" user account!
+
+![png](img/screen3.png)
+![png](img/screen4.png)
+![png](img/screen5.png)
+
+### A librarian can search for a user account
+
+![png](img/screen6.png)
+![png](img/screen7.png)
+
+### Can create a new reference and find the right category of a book using the Dewey Classification
+
+![png](img/screen8.png)
+![png](img/screen9.png)
+
+
+
+
+
+
 
 
 
