@@ -6,7 +6,7 @@
 
 ---
 
-
+![Linux](https://img.shields.io/badge/Linux-Mint20.1-informational?style=plastic)
 [![python](https://img.shields.io/badge/python-3.8.5-brightgreen?style=plastic)](https://www.python.org/downloads/release/python-385/)
 ![Tkinter](https://img.shields.io/badge/Tkinter-8.6-brightgreen?style=plastic)
 ![MySQL](https://img.shields.io/badge/MySQL-8.0.25-brightgreen?style=plastic)
@@ -34,7 +34,7 @@ export MYSQL_PASSWORD='password'<br/>
 
 ![png](img/step0.png)
 
-### Create two databases: dewey_classification and library
+### Create two databases: "dewey_classification" and "library"
 
 ![png](img/step1.png)
 
