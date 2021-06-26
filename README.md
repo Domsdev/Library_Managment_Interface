@@ -29,8 +29,10 @@ export MYSQL_PASSWORD='password'<br/>
 **Sending mails with smtplib: I created and configured a dedicated gmail adress (normaly set by the administrator of the library) in order to send emails with an activation code when a new user of the library is registered. Then, the user will be able to connect to the interface and connect to its newly created account by entering its activation code.** <br/>
  <br/>
 Gmail by default tries to make your email secure by preventing this type of third-party access. You can manage your gmail security settings by allowing less secure apps. <br/>
+ <br/>
 ![png](img/less_secure_app.png)
-![png](img/critical_security_alert.png)
+ <br/>
+![png](img/critical_security_alert.png) <br/>
 I allowed less secure apps only to test the code and experiment with it. I recommend to return your security settings back to its defaults when finished. <br/>
 If you don’t want to lower the security settings of your Gmail account, check out Google’s documentation on how to gain access credentials for your Python script, using the OAuth2 authorization framework. <br/>
  <br/>
