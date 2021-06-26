@@ -30,7 +30,6 @@ export MYSQL_PASSWORD='password'<br/>
  <br/>
 Gmail by default tries to make your email secure by preventing this type of third-party access. You can manage your gmail security settings by allowing less secure apps. <br/>
 ![png](img/less_secure_app.png)
-You will receive the following email alert:
 ![png](img/critical_security_alert.png)
 I allowed less secure apps only to test the code and experiment with it. I recommend to return your security settings back to its defaults when finished. <br/>
 If you don’t want to lower the security settings of your Gmail account, check out Google’s documentation on how to gain access credentials for your Python script, using the OAuth2 authorization framework. <br/>
