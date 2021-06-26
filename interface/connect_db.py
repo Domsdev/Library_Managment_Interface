@@ -29,7 +29,7 @@ def connect_db(query, queryList):
 		traceback_lines = traceback.format_exc().splitlines()
 
 		# print error in error.txt file
-		with open('error.txt', 'a+') as f:
+		with open('error.txt', 'w') as f:
 			f.write(f"\n\nError occured: {date_of_today}\n")
 			f.write(f"MySQL Error message: {err.msg}")
 			for k in range(len(traceback_lines)):
@@ -135,12 +135,6 @@ def create_user_account(account_data, connect, cursor):
 	html_body, subject = html_body_activation_code(name, code)
 	receiver = account_data[3]
 
-	#############################################
-	# TESTING MAIL ADRESS                       #
-	# replace user's adress for test phases:    #
-	receiver = "domsdev.receiver@outlook.com"   #
-	#############################################
-
 	s = Send_mail(receiver, html_body, subject)
 	#######################################################
 
@@ -188,7 +182,6 @@ def activate(login_list, connect, cursor):
 	cursor.execute(Query)
 	coordinate_id = cursor.fetchone()
 	connect.commit()
-	print('activate---------------------coordinate_id', coordinate_id)
 
 	if coordinate_id == None: # given activation code is not in dB
 		return "code error"
@@ -201,10 +194,8 @@ def activate(login_list, connect, cursor):
 		cursor.execute(Query)
 		pseudo = cursor.fetchone()
 		connect.commit()
-		print('activate---------------------pseudo', pseudo)
 
 		if pseudo == None: # case of a new user !
-			print('activate-------------------- new user case')
 			if len(login_list) == 1: # only check for activation code
 				return "new user"
 
@@ -232,12 +223,10 @@ def activate(login_list, connect, cursor):
 					return True
 
 		else: # case of an existing user
-			print('activate----------------- existing user case')
 			if len(login_list) == 1: # only check for activation code
 				return pseudo[0]
 
 			elif len(login_list) > 1:
-				print('activate------------------- login list > 1')
 				# update activation_code
 				Query = """UPDATE Coordinate
 				           SET    activation_code = NULL
@@ -256,7 +245,6 @@ def activate(login_list, connect, cursor):
 					return True
 
 				elif len(login_list) == 2:
-					print('activate------------------- login list = 2')
 					return True
 
 ##############################################################################
@@ -399,12 +387,6 @@ def update(account_data, connect, cursor):
 
 	html_body, subject = html_body_new_activation_code(name, code)
 	receiver = account_data[5]
-
-	#############################################
-	# TESTING MAIL ADRESS                       #
-	# replace user's adress for test phases:    #
-	receiver = "domsdev.receiver@outlook.com"   #
-	#############################################
 
 	s = Send_mail(receiver, html_body, subject)
 	#######################################################
@@ -602,121 +584,33 @@ def new_reference(reference_data, connect, cursor):
 def extented_search(search_query, connect, cursor):
 	"search a reference in all dB with a list of keywords and sentences"
 
-	print('')
-
 	#######################################################
-	print('SEARCH in Ressource: TITLE')
+	print('\nSEARCH in Ressource: TITLE, THEME, ABSTRACT')
 
 	Query = f"""SELECT  id,
 	                    title,
-	                    MATCH(title)
+	                    MATCH(title, theme, abstract)
 	                    AGAINST ("{search_query}") as score
-	            FROM    Ressource
-	            WHERE   MATCH(title)
+	            FROM    Reference
+	            WHERE   MATCH(title, theme, abstract)
 	            AGAINST ("{search_query}") > 0.1
 	            ORDER BY score DESC;"""
 	cursor.execute(Query)
-	search_result1 = cursor.fetchall()
+	search_result = cursor.fetchall()
 	connect.commit()
 
-	for k in range(len(search_result1)):
-		print("{:3}".format(search_result1[k][0]), "{:48}".format(
-			search_result1[k][1]), search_result1[k][2])
+	for k in range(len(search_result)):
+		print("{:3}".format(search_result[k][0]), "{:48}".format(
+			search_result[k][1]), search_result[k][2])
 
 	print('')
 
-	#######################################################
-	print('SEARCH in Ressource: THEME, ABSTRACT')
-
-	Query = f"""SELECT  id,
-	                    title,
-	                    MATCH(theme, abstract)
-	                    AGAINST ("{search_query}") as score
-	            FROM    Ressource
-	            WHERE   MATCH(theme, abstract)
-	            AGAINST ("{search_query}") > 0.1
-	            ORDER BY score DESC;"""
-	cursor.execute(Query)
-	search_result2 = cursor.fetchall()
-	connect.commit()
-
-	for k in range(len(search_result2)):
-		print("{:3}".format(search_result2[k][0]), "{:48}".format(
-			search_result2[k][1]), search_result2[k][2])
-
-	print('')
-
-	#######################################################
-	print('SEARCH in Book: AUTHOR')
-
-	Query = f"""SELECT  ressource_id,
-	                    author,
-	                    MATCH(author)
-	                    AGAINST ("{search_query}") as score
-	            FROM    Book
-	            WHERE   MATCH(author)
-	            AGAINST ("{search_query}") > 0.1
-	            ORDER BY score DESC;"""
-	cursor.execute(Query)
-	search_result3 = cursor.fetchall()
-	connect.commit()
-
-	for k in range(len(search_result3)):
-		print("{:3}".format(search_result3[k][0]), "{:48}".format(
-			search_result3[k][1]), search_result3[k][2])
-
-	print('')
-
-	#######################################################
-	print('SEARCH in Comic: AUTHOR')
-
-	Query = f"""SELECT  ressource_id,
-	                    author,
-	                    MATCH(author, album)
-	                    AGAINST ("{search_query}") as score
-	            FROM    Comic
-	            WHERE   MATCH(author, album)
-	            AGAINST ("{search_query}") > 0
-	            ORDER BY score DESC;"""
-	cursor.execute(Query)
-	search_result4 = cursor.fetchall()
-	connect.commit()
-
-	for k in range(len(search_result4)):
-		print("{:3}".format(search_result4[k][0]), "{:48}".format(
-			search_result4[k][1]), search_result4[k][2])
-
-	print('')
-
-	#######################################################
-	print('SEARCH in Comic: ALBUM')
-
-	Query = f"""SELECT  ressource_id,
-	                    album,
-	                    MATCH(author, album)
-	                    AGAINST ("{search_query}") as score
-	            FROM    Comic
-	            WHERE   MATCH(author, album)
-	            AGAINST ("{search_query}") > 0
-	            ORDER BY score DESC;"""
-	cursor.execute(Query)
-	search_result5 = cursor.fetchall()
-	connect.commit()
-
-	for k in range(len(search_result5)):
-		print("{:3}".format(search_result5[k][0]), "{:48}".format(
-			search_result5[k][1]), search_result5[k][2])
-
-	print('')
-
-	return search_result5
-
-
+	return search_result
 
 ##############################################################################
 
 def custom_search(search_list, connect, cursor):
-	"for each selected table, search a referece with keywords and sentences"
+	"for each selected table, search a reference with keywords and sentences"
 
 	pass
 

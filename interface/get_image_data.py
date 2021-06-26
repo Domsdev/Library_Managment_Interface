@@ -7,7 +7,9 @@ import os
 
 def Get_image_data(window):
 
-	open_file = filedialog.askopenfile(initialdir = "/home/doms/Bureau",
+	desktop_folder = os.path.expanduser("~/Desktop") 
+
+	open_file = filedialog.askopenfile(initialdir = desktop_folder,
 			                           parent=window,
 			                           mode='rb',
 			                           title='Choisissez un fichier',
@@ -17,7 +19,6 @@ def Get_image_data(window):
 			                          	            ("Tous les formats","*.*")
 			                          	           )
 			                          )
-	# mode rb is for 'read binary'
 
 	if open_file != None:
 	    data = open_file.read()

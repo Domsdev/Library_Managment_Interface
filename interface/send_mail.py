@@ -95,7 +95,7 @@ def Send_mail(receiver, html_body, subject):
 		traceback_lines = traceback.format_exc().splitlines()
 		print(traceback_lines[-1])
 
-		with open('error.txt', 'a+') as f:
+		with open('error.txt', 'w') as f:
 			f.write(f"\n\nError occured: {date_of_today}\n")
 			for k in range(len(traceback_lines)):
 				f.write(traceback_lines[k])
@@ -184,9 +184,9 @@ def plain_text_tls_mail(sender, receiver, password, message_body):
 ##############################################################################
 
 if __name__ == '__main__':
+	# Testing
 
-	receiver = "domsdev.receiver@outlook.com,"
-	# receiver = "domsdev.receiver@outlook.com, domsdev.sender@gmail.com"
+	receiver = input("enter receiver mail adress")
 
 	html_body, subject = html_body_activation_code('Huguette Pallant', 778265)
 

@@ -327,6 +327,9 @@ class Search_user_account_page(Frame_page):
 
     def update_account_command(self):
 
+        if self.account_box.curselection() == ():
+            self.error("Veuillez selectionner un compte ou modifier votre recherche")
+
         # get the selected item from account_box
         selected_account_string = self.account_box.get(
             self.account_box.curselection()
@@ -337,7 +340,7 @@ class Search_user_account_page(Frame_page):
         selected_account = selected_account_string.split(' ')
         # selected_account == ['Id:', '16', '-', 'Pseudo:', 'Inactive', .....]
 
-        # Keep only selected account id
+        # Keep only selected account Id number
         del selected_account[0]
         del selected_account[1:]
 
@@ -346,6 +349,10 @@ class Search_user_account_page(Frame_page):
             Update_user_account_page(Top.top_window, selected_account)
 
 ##############################################################################
+    def error(self, type_error):
+        # message box for errors during account selection
+        messagebox.showerror("Erreur:", type_error, parent= self.window)
+
 
     def back_button(self): # .grid row = 9
         Normalised.button_N(

@@ -45,7 +45,7 @@ class Create_reference_page(Frame_page):
             pady= 30, sticky='we')
 
 ##############################################################################
-    """
+    
     def reference_type_choice(self): # .grid row = 1, 2, 3
         Normalised.label_N(self.frame, "Type", 1, 1, 3, 1,
             sticky= 'nswe')
@@ -70,33 +70,39 @@ class Create_reference_page(Frame_page):
 
         if self.reference_var.get() == 1: # initialise fields
             self.book_type()
-    """
+    
 ##############################################################################
+# Improvement testing by adding a menu button for type selection
+################################################################
 
-    def reference_type_choice(self): # .grid row = 1, 2, 3
-        Normalised.label_N(self.frame, "Type", 1, 1, 3, 1,
-            sticky= 'nswe')
+    # def reference_type_choice(self): # .grid row = 1, 2, 3
+    #     Normalised.label_N(self.frame, "Type", 1, 1, 3, 1,
+    #         sticky= 'nswe')
 
-        # type_list = connect_db("fetch type list", None)
+    #     # type_list = connect_db("fetch type list", None)
 
-        def Poison():
-            print('Poison')
+    #     def book():
+    #         print('book')
 
-        def Remede():
-            print('Remède')
+    #     def comic():
+    #         print('comic')
 
-        mb = Menubutton(self.frame, text='Type',
-            bg= '#BDBCB5', font= ("Calibri", 12), fg = 'black',
-            relief= 'raised', highlightthickness= 0)
+    #     def comic():
+    #         print('comic')
+
+    #     mb = Menubutton(self.frame, text='Type',
+    #         bg= '#BDBCB5', font= ("Calibri", 12), fg = 'black',
+    #         relief= 'raised', highlightthickness= 0)
         
 
-        mb.menu = Menu(mb, tearoff=0)
-        mb['menu'] = mb.menu
+    #     mb.menu = Menu(mb, tearoff=0)
+    #     mb['menu'] = mb.menu
 
-        mb.menu.add_command(label='Poison', command= Poison)
-        mb.menu.add_command(label='Remède contre le coronavirus', command= Remede)
+    #     mb.menu.add_command(label='Book', command= book)
+    #     mb.menu.add_command(label='Comic', command= comic)
+    #     #mb.menu.add_command(label='Magazine', command= magazine)
 
-        mb.grid(row= 1, column= 2, sticky= 'we')
+    #     mb.grid(row= 1, column= 2, sticky= 'we')
 
 ##############################################################################
 
